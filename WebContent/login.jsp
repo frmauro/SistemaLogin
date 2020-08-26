@@ -8,9 +8,9 @@
 </head>
 <body>
 
-	<form action="login">
+	<form action="login" method="post">
 		<p align="center">
-		<table>
+		<table cellpadding="6" >
 			<tr>
 				<td>Usuário:</td>
 				<td><input type="text" name="txtUsuario" /></td>
@@ -18,6 +18,9 @@
 			<tr>
 				<td>Senha:</td>
 				<td><input type="text" name="txtSenha" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"  align="center" ><input type="submit" value="Logar" /></td>
 			</tr>
 		</table>
 		</p>
