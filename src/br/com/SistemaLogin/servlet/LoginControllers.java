@@ -1,41 +1,55 @@
 package br.com.SistemaLogin.servlet;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class LoginControllers
- */
-@WebServlet("/Login")
+
+@WebServlet("/login")
 public class LoginControllers extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginControllers() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+    //public LoginControllers() {
+      //  super();
+        // TODO Auto-generated constructor stub
+    //}
+
+	
+	//protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+	//}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		processRequest(request, response);
+		//doGet(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+
+	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		 
+		ValidaDadosRecebidos(request);
+		RequestDispatcher rd = request.getRequestDispatcher("logado.jsp");
+		rd.forward(request, response);
+	}
+
+
+	private void ValidaDadosRecebidos(HttpServletRequest request) throws ServletException {
+		String nomeUsuario = request.getParameter("txtUsuario");
+		String senha = request.getParameter("txtSenha");
+		
+		if (nomeUsuario.trim().equals("") || senha.trim().equals("")) 
+			throw new ServletException("Preencha os campos");
+		
+		if (!nomeUsuario.trim().equals("hugo") || !senha.trim().equals("123")) 
+			throw new ServletException("Preencha os campos");
+		
 	}
 
 }
