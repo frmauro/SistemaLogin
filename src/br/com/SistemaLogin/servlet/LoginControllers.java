@@ -8,6 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import br.com.SistemaLogin.exception.InvalidUserException;
 
 
 @WebServlet("/login")
@@ -44,11 +47,11 @@ public class LoginControllers extends HttpServlet {
 		String nomeUsuario = request.getParameter("txtUsuario");
 		String senha = request.getParameter("txtSenha");
 		
-		if (nomeUsuario.trim().equals("") || senha.trim().equals("")) 
-			throw new ServletException("Preencha os campos");
-		
 		if (!nomeUsuario.trim().equals("hugo") || !senha.trim().equals("123")) 
-			throw new ServletException("Preencha os campos");
+			throw new InvalidUserException("Login ou senha inválidos");
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("usuarioAutenticado", nomeUsuario);
 		
 	}
 

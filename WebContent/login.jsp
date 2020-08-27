@@ -5,10 +5,28 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Sistema Login</title>
+<script type="text/javascript">
+
+function validarLogin(){
+	if (document.formLogin.txtUsuario.value == ""){
+		alert("Usuário não informado!");
+		return false;
+	}
+	
+	if (document.formLogin.txtSenha.value == ""){
+		alert("Senha não informada!");
+		return false;
+	}
+
+	document.formLogin.submit();
+}
+
+</script>
+
 </head>
 <body>
 
-	<form action="login" method="post">
+	<form action="login" method="post" name="formLogin">
 		<p align="center">
 		<table cellpadding="6" >
 			<tr>
@@ -20,7 +38,7 @@
 				<td><input type="text" name="txtSenha" /></td>
 			</tr>
 			<tr>
-				<td colspan="2"  align="center" ><input type="submit" value="Logar" /></td>
+				<td colspan="2"  align="center" ><input type="button" value="Logar" onClick="validarLogin()" /></td>
 			</tr>
 		</table>
 		</p>
