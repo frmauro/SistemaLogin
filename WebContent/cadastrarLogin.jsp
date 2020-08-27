@@ -8,6 +8,19 @@
 <script type="text/javascript" src="validarCampos.js"></script>
 </head>
 <body>
+
+	<%
+		String nomeUsuario = (String) session.getAttribute("usuarioAutenticado");
+	if (nomeUsuario == null)
+		throw new ServletException("Nenhum usuario está logado!!");
+	%>
+
+	Seja bem vindo:
+	<%=nomeUsuario%>
+	|
+	<a href="remover.jsp">Sair</a>
+	<br />
+
 	<h2>Cadastrar Login</h2>
 	<form name="formLogin" action="CadastroLogin" method="post">
 		<table>
