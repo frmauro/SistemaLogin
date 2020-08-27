@@ -5,24 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Sistema Login</title>
-<script type="text/javascript">
-
-function validarLogin(){
-	if (document.formLogin.txtUsuario.value == ""){
-		alert("Usuário não informado!");
-		return false;
-	}
-	
-	if (document.formLogin.txtSenha.value == ""){
-		alert("Senha não informada!");
-		return false;
-	}
-
-	document.formLogin.submit();
-}
-
-</script>
-
+<script type="text/javascript" src="validarCampos.js" ></script>
 </head>
 <body>
 
